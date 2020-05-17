@@ -36,6 +36,7 @@ namespace HandsOnLab.Core.Test
         [TestMethod]
         public async Task FindEmployeeAsync()
         {
+            Repository.GetEmployeeAsync().Returns(employees);
             var employee = await Service.FindEmployeeAsync(1).ConfigureAwait(false);
             var expectedSalary = 120 * employees.FirstOrDefault(emp => emp.Id == 1).HourlySalary * 12;
             Assert.AreEqual("Juan", employee.Name);
