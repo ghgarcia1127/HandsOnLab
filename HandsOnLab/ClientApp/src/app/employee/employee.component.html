@@ -1,0 +1,57 @@
+<h1 id="tableLabel">HandsOnLab</h1>
+
+<div class="input-group input-group-sm mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-sm">Client Id</span>
+  </div>
+  <input type="number" [(ngModel)]="identifier" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+  <div class="input-group-append">
+    <button type="button" class="btn btn-primary form-control" (click)="GetEmployees()">Get Employees</button>
+  </div>
+</div>
+
+<p *ngIf="loading"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="employees">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>ContractTypeName</th>
+      <th>RoleId</th>
+      <th>RoleName</th>
+      <th>RoleDescription</th>
+      <th>MonthlySalary</th>
+      <th>HourlySalary</th>
+      <th>AnnualSalary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of employees">
+      <td>{{ employee.id }}</td>
+      <td>{{ employee.name }}</td>
+      <td>{{ employee.contractTypeName }}</td>
+      <td>{{ employee.roleId }}</td>
+      <td>{{ employee.roleName }}</td>
+      <td>{{ employee.roleDescription }}</td>
+      <td>{{ employee.monthlySalary }}</td>
+      <td>{{ employee.hourlySalary }}</td>
+      <td>{{ employee.annualSalary }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="card" style="width: 18rem;" *ngIf="employee">
+  <div class="card-body">
+    <h5 class="card-title">{{ employee.name }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted"><b>Employee id: </b>{{employee.id}}</h6>
+    <p class="card-text"><b>ContractType:</b> {{employee.contractTypeName}}</p>
+    <p class="card-text"><b>Role Id:</b> {{employee.roleId}}</p>
+    <p class="card-text"><b>Role Name:</b> {{employee.roleName}}</p>
+    <p class="card-text"><b>Role Description:</b> {{employee.roleDescription}}</p>
+    <p class="card-text"><b>Monthly Salary:</b> {{employee.monthlySalary}}</p>
+    <p class="card-text"><b>Hourly Salary:</b> {{employee.hourlySalary}}</p>
+    <p class="card-text"><b>Annual Salary:</b> {{employee.annualSalary}}</p>
+
+  </div>
+</div>
